@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "canopy-pipeline-template"
+version = "0.1.0"
+description = ""
+authors = ["Canopy Pte Ltd <hello@canopy.cloud>"]
+readme = "README.md"
+license = "proprietary"
+
+[tool.poetry.dependencies]
+python = ">=3.8.0,<3.12"
+dagster = "^1.3.5"
+dagit = "^1.3.5"
+boto3 = "^1.26.137"
+dagster-postgres = "^0.19.5"
+dagster-k8s = "^0.19.5"
+dagster-celery = "^0.19.5"
+dagster-github = "^0.19.5"
+dagster-aws = "^0.19.5"
+dagster-shell = "^0.19.5"
+
+[tool.poetry.group.dev.dependencies]
+pytest-mock = "^3.10.0"
+pre-commit = "^3.3.2"
+black = "^23.3.0"
+pylint = "^2.17.4"
+bandit = "^1.7.5"
+detect-secrets = "^1.4.0"
+pytest-cov = "^4.0.0"
+pytest-xdist = "^3.3.1"
+pytest-dependency = "^0.5.1"
+pytest = "^7.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.dagster]
+module_name = "pipeline"

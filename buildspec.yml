@@ -1,0 +1,27 @@
+version: 0.2
+
+env:
+  variables:
+    DOCKER_CACHE_TAG: latest
+    TERRAGRUNT_VERSION: 0.45.15
+    TERRAFORM_VERSION: 1.4.6
+    CLAMAV_SCAN_ARGS: '--max-dir-recursion 30 --block-encrypted=yes --scan-archive=yes --infected -r --cross-fs=yes'
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - bash scripts/codebuild/install.sh
+
+  pre_build:
+    commands:
+      - bash scripts/codebuild/pre_build.sh
+
+  build:
+    commands:
+      - bash scripts/codebuild/build.sh
+
+  post_build:
+    commands:
+      - curl -s https://codecov.io/bash | bash
